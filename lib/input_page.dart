@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+const reusableCardColor = 0xff1D1F33;
+const bottomButtonColor = Color(0xffeb1555);
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -20,12 +23,12 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0xff1D1F33),
+                    colour: Color(reusableCardColor),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0xff1D1F33),
+                    colour: Color(reusableCardColor),
                   ),
                 ),
               ],
@@ -36,7 +39,7 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0xff1D1F33),
+                    colour: Color(reusableCardColor),
                   ),
                 ),
               ],
@@ -47,16 +50,22 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0xff1D1F33),
+                    colour: Color(reusableCardColor),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0xff1D1F33),
+                    colour: Color(reusableCardColor),
                   ),
                 ),
               ],
             ),
+          ),
+          Container(
+            height: 70.0,
+            width: double.infinity,
+            margin: EdgeInsets.only(top: 10.0),
+            color: bottomButtonColor,
           ),
         ],
       ),
@@ -65,9 +74,9 @@ class _InputPageState extends State<InputPage> {
 }
 
 class ReusableCard extends StatelessWidget {
-  Color colour;
-
   ReusableCard({this.colour});
+
+  final Color colour;
 
   @override
   Widget build(BuildContext context) {
