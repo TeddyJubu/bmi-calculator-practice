@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'icon_content.dart';
+import 'reusable_card.dart';
 
 const reusableCardColor = 0xff1D1F33;
 const bottomButtonColor = Color(0xffeb1555);
@@ -23,11 +27,19 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
+                    cardChild: TopCards(
+                      icon: FontAwesomeIcons.mars,
+                      text: "MALE",
+                    ),
                     colour: Color(reusableCardColor),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
+                    cardChild: TopCards(
+                      icon: FontAwesomeIcons.venus,
+                      text: "FEMALE",
+                    ),
                     colour: Color(reusableCardColor),
                   ),
                 ),
@@ -68,23 +80,6 @@ class _InputPageState extends State<InputPage> {
             color: bottomButtonColor,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  ReusableCard({this.colour});
-
-  final Color colour;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: colour,
-        borderRadius: BorderRadius.circular(10.0),
       ),
     );
   }
