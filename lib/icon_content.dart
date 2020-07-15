@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'constants.dart';
+
 class TopCards extends StatelessWidget {
   const TopCards({@required this.icon, @required this.text});
   final IconData icon;
@@ -17,11 +19,8 @@ class TopCards extends StatelessWidget {
           height: 15.0,
         ),
         Text(
-          'MALE',
-          style: TextStyle(
-            fontSize: 18.0,
-            color: Color(0xFF8D8E98),
-          ),
+          text,
+          style: kLabelStyle,
         )
       ],
     );
