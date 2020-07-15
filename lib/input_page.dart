@@ -18,6 +18,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +27,7 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI CALCULATOR'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
             child: Row(
@@ -70,6 +72,55 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        Text(
+                          "HEIGHT",
+                          style: kLabelStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: <Widget>[
+                            Text(
+                              height.toString(),
+                              style: kLargeNumber,
+                            ),
+                            Text(
+                              'cm',
+                              style: kLabelStyle,
+                            ),
+                          ],
+                        ),
+                        SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                            activeTrackColor: Colors.white,
+                            inactiveTrackColor: Color(0xFF8D8E98),
+                            thumbColor: kBottomButtonColor,
+                            overlayColor: Color(0x29eb1555),
+                            thumbShape:
+                                RoundSliderThumbShape(enabledThumbRadius: 10.0),
+                            overlayShape:
+                                RoundSliderOverlayShape(overlayRadius: 20.0),
+                          ),
+                          child: Slider(
+                            value: height.toDouble(),
+                            max: 220.0,
+                            min: 120.0,
+                            onChanged: (double value) {
+                              setState(() {
+                                height = value.round();
+                              });
+                            },
+                          ),
+                        )
+                      ],
+                    ),
                     colour: kActiveCardColor,
                   ),
                 ),
