@@ -131,9 +131,7 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: ReusableCard(
-                    colour: kActiveCardColor,
-                  ),
+                  child: bottomCards(labelText: "WEIGHT"),
                 ),
                 Expanded(
                   child: ReusableCard(
