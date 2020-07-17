@@ -5,7 +5,7 @@
 
 
 
-## What you will create
+## Description 
 
 I've made a Body Mass Index Calculator inspired by the beautiful designs made by [Ruben Vaalt](https://dribbble.com/shots/4585382-Simple-BMI-Calculator). It isa multi screen app with simple functionality but full-on custom styling. 
 
