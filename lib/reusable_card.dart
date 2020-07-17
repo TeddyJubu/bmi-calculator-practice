@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'constants.dart';
 
+int weight = 60;
+
 ///empty boxes .......................
 class ReusableCard extends StatelessWidget {
   ReusableCard({@required this.colour, this.cardChild, this.onPressCode});
@@ -27,15 +29,28 @@ class ReusableCard extends StatelessWidget {
   }
 }
 
-///Bottom two card's contents
-ReusableCard bottomCards({String labelText}) {
-//    IconData rightIcon;
-//    IconData leftIcon;
-  int weight = 60;
+class BottomCard extends StatefulWidget {
+  @override
+  _BottomCardState createState() => _BottomCardState();
+}
 
-  return ReusableCard(
-    colour: kActiveCardColor,
-    cardChild: Column(
+class _BottomCardState extends State<BottomCard> {
+  String labelText = "WEIGHT";
+  void plus() {
+    setState(() {
+      weight++;
+    });
+  }
+
+  void minus() {
+    setState(() {
+      weight--;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
@@ -49,32 +64,41 @@ ReusableCard bottomCards({String labelText}) {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ///Minus Button
             RoundButton(
-              icon: FontAwesomeIcons.plus,
+              buttonPress: () {
+                minus();
+              },
+              icon: FontAwesomeIcons.minus,
             ),
             SizedBox(
               width: 15.0,
             ),
+
+            ///plus button
             RoundButton(
-              icon: FontAwesomeIcons.minus,
+              buttonPress: () {
+                plus();
+              },
+              icon: FontAwesomeIcons.plus,
             ),
           ],
         )
       ],
-    ),
-  );
+    );
+  }
 }
 
 ///Round Buttons for bottom cards
 class RoundButton extends StatelessWidget {
-  RoundButton({this.icon});
+  RoundButton({this.icon, this.buttonPress});
   final IconData icon;
-
+  final Function buttonPress;
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
       onPressed: () {
-        print("hi");
+        buttonPress();
       },
       child: Icon(
         icon,
