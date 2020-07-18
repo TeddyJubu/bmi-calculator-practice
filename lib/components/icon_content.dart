@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 class TopCards extends StatelessWidget {
   const TopCards({@required this.icon, @required this.text});
