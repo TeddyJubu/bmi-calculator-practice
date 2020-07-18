@@ -29,24 +29,12 @@ class ReusableCard extends StatelessWidget {
   }
 }
 
-class BottomCard extends StatefulWidget {
-  @override
-  _BottomCardState createState() => _BottomCardState();
-}
-
-class _BottomCardState extends State<BottomCard> {
-  String labelText = "WEIGHT";
-  void plus() {
-    setState(() {
-      weight++;
-    });
-  }
-
-  void minus() {
-    setState(() {
-      weight--;
-    });
-  }
+class BottomCards extends StatelessWidget {
+  BottomCards({this.labelText, this.topic, this.counter1, this.counter2});
+  final String labelText;
+  final int topic;
+  final Function counter1;
+  final Function counter2;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +46,7 @@ class _BottomCardState extends State<BottomCard> {
           style: kLabelStyle,
         ),
         Text(
-          weight.toString(),
+          topic.toString(),
           style: kLargeNumber,
         ),
         Row(
@@ -66,9 +54,7 @@ class _BottomCardState extends State<BottomCard> {
           children: <Widget>[
             ///Minus Button
             RoundButton(
-              buttonPress: () {
-                minus();
-              },
+              buttonPress: counter2,
               icon: FontAwesomeIcons.minus,
             ),
             SizedBox(
@@ -77,9 +63,7 @@ class _BottomCardState extends State<BottomCard> {
 
             ///plus button
             RoundButton(
-              buttonPress: () {
-                plus();
-              },
+              buttonPress: counter1,
               icon: FontAwesomeIcons.plus,
             ),
           ],
