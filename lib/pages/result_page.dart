@@ -4,20 +4,25 @@ import 'package:flutter/material.dart';
 import '../components/reusable_card.dart';
 
 class Result extends StatelessWidget {
+  final String result;
+  final String bmi;
+  final String interpretation;
+  Result({this.bmi, this.interpretation, this.result});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('OUTPUT'),
-      ),
+      appBar: AppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text(
-              "Your Result",
-              style: kLargeNumber,
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Text(
+                "Your Result",
+                style: kLargeNumber.copyWith(fontWeight: FontWeight.w500),
+              ),
             ),
             Expanded(
               child: ReusableCard(
@@ -26,26 +31,30 @@ class Result extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'NORMAL',
+                      result.toUpperCase(),
                       style: kLabelStyle.copyWith(
-                        color: Colors.green,
+                        color: Color(0xFF24D876),
                         fontWeight: FontWeight.w700,
+                        fontSize: 25.0,
                       ),
                     ),
                     Text(
-                      '26.7',
+                      bmi,
                       style: TextStyle(
                         fontSize: 90.0,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                       ),
                     ),
-                    Text(
-                      'lalala lalala lalala lalala lalala lalala lalala lalala',
-                      style: kLabelStyle.copyWith(
-                        color: Colors.white,
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        interpretation,
+                        style: kLabelStyle.copyWith(
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     )
                   ],
                 ),
